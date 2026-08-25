@@ -14,6 +14,8 @@ import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ChecklistsRouteImport } from './routes/checklists'
 import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as FollowUpsRouteImport } from './routes/follow-ups'
+import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as StakeholdersRouteImport } from './routes/stakeholders'
@@ -43,6 +45,16 @@ const DocumentsRoute = DocumentsRouteImport.update({
   path: '/documents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FollowUpsRoute = FollowUpsRouteImport.update({
+  id: '/follow-ups',
+  path: '/follow-ups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgrammesRoute = ProgrammesRouteImport.update({
+  id: '/programmes',
+  path: '/programmes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
@@ -65,6 +77,8 @@ export interface FileRoutesByFullPath {
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
+  '/follow-ups': typeof FollowUpsRoute
+  '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -75,6 +89,8 @@ export interface FileRoutesByTo {
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
+  '/follow-ups': typeof FollowUpsRoute
+  '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -86,6 +102,8 @@ export interface FileRoutesById {
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
+  '/follow-ups': typeof FollowUpsRoute
+  '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
@@ -98,6 +116,8 @@ export interface FileRouteTypes {
     | '/cases'
     | '/checklists'
     | '/documents'
+    | '/follow-ups'
+    | '/programmes'
     | '/reports'
     | '/research'
     | '/stakeholders'
@@ -108,6 +128,8 @@ export interface FileRouteTypes {
     | '/cases'
     | '/checklists'
     | '/documents'
+    | '/follow-ups'
+    | '/programmes'
     | '/reports'
     | '/research'
     | '/stakeholders'
@@ -118,6 +140,8 @@ export interface FileRouteTypes {
     | '/cases'
     | '/checklists'
     | '/documents'
+    | '/follow-ups'
+    | '/programmes'
     | '/reports'
     | '/research'
     | '/stakeholders'
@@ -129,6 +153,8 @@ export interface RootRouteChildren {
   CasesRoute: typeof CasesRoute
   ChecklistsRoute: typeof ChecklistsRoute
   DocumentsRoute: typeof DocumentsRoute
+  FollowUpsRoute: typeof FollowUpsRoute
+  ProgrammesRoute: typeof ProgrammesRoute
   ReportsRoute: typeof ReportsRoute
   ResearchRoute: typeof ResearchRoute
   StakeholdersRoute: typeof StakeholdersRoute
@@ -171,6 +197,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/follow-ups': {
+      id: '/follow-ups'
+      path: '/follow-ups'
+      fullPath: '/follow-ups'
+      preLoaderRoute: typeof FollowUpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programmes': {
+      id: '/programmes'
+      path: '/programmes'
+      fullPath: '/programmes'
+      preLoaderRoute: typeof ProgrammesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -201,6 +241,8 @@ const rootRouteChildren: RootRouteChildren = {
   CasesRoute: CasesRoute,
   ChecklistsRoute: ChecklistsRoute,
   DocumentsRoute: DocumentsRoute,
+  FollowUpsRoute: FollowUpsRoute,
+  ProgrammesRoute: ProgrammesRoute,
   ReportsRoute: ReportsRoute,
   ResearchRoute: ResearchRoute,
   StakeholdersRoute: StakeholdersRoute,
