@@ -13,7 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ChecklistsRouteImport } from './routes/checklists'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as StakeholdersRouteImport } from './routes/stakeholders'
 
 const IndexRoute = IndexRouteImport.update({
@@ -36,9 +38,19 @@ const ChecklistsRoute = ChecklistsRouteImport.update({
   path: '/checklists',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StakeholdersRoute = StakeholdersRouteImport.update({
@@ -52,7 +64,9 @@ export interface FileRoutesByFullPath {
   '/assistant': typeof AssistantRoute
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
+  '/documents': typeof DocumentsRoute
   '/reports': typeof ReportsRoute
+  '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesByTo {
@@ -60,7 +74,9 @@ export interface FileRoutesByTo {
   '/assistant': typeof AssistantRoute
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
+  '/documents': typeof DocumentsRoute
   '/reports': typeof ReportsRoute
+  '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesById {
@@ -69,23 +85,41 @@ export interface FileRoutesById {
   '/assistant': typeof AssistantRoute
   '/cases': typeof CasesRoute
   '/checklists': typeof ChecklistsRoute
+  '/documents': typeof DocumentsRoute
   '/reports': typeof ReportsRoute
+  '/research': typeof ResearchRoute
   '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/assistant' | '/cases' | '/checklists' | '/reports' | '/stakeholders'
+    | '/'
+    | '/assistant'
+    | '/cases'
+    | '/checklists'
+    | '/documents'
+    | '/reports'
+    | '/research'
+    | '/stakeholders'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/assistant' | '/cases' | '/checklists' | '/reports' | '/stakeholders'
+    | '/'
+    | '/assistant'
+    | '/cases'
+    | '/checklists'
+    | '/documents'
+    | '/reports'
+    | '/research'
+    | '/stakeholders'
   id:
     | '__root__'
     | '/'
     | '/assistant'
     | '/cases'
     | '/checklists'
+    | '/documents'
     | '/reports'
+    | '/research'
     | '/stakeholders'
   fileRoutesById: FileRoutesById
 }
@@ -94,7 +128,9 @@ export interface RootRouteChildren {
   AssistantRoute: typeof AssistantRoute
   CasesRoute: typeof CasesRoute
   ChecklistsRoute: typeof ChecklistsRoute
+  DocumentsRoute: typeof DocumentsRoute
   ReportsRoute: typeof ReportsRoute
+  ResearchRoute: typeof ResearchRoute
   StakeholdersRoute: typeof StakeholdersRoute
 }
 
@@ -128,11 +164,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChecklistsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stakeholders': {
@@ -150,7 +200,9 @@ const rootRouteChildren: RootRouteChildren = {
   AssistantRoute: AssistantRoute,
   CasesRoute: CasesRoute,
   ChecklistsRoute: ChecklistsRoute,
+  DocumentsRoute: DocumentsRoute,
   ReportsRoute: ReportsRoute,
+  ResearchRoute: ResearchRoute,
   StakeholdersRoute: StakeholdersRoute,
 }
 export const routeTree = rootRouteImport
