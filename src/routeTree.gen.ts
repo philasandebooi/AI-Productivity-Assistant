@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as CasesRouteImport } from './routes/cases'
+import { Route as ChecklistsRouteImport } from './routes/checklists'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as StakeholdersRouteImport } from './routes/stakeholders'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,76 @@ const AssistantRoute = AssistantRouteImport.update({
   path: '/assistant',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChecklistsRoute = ChecklistsRouteImport.update({
+  id: '/checklists',
+  path: '/checklists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StakeholdersRoute = StakeholdersRouteImport.update({
+  id: '/stakeholders',
+  path: '/stakeholders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
+  '/cases': typeof CasesRoute
+  '/checklists': typeof ChecklistsRoute
+  '/reports': typeof ReportsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
+  '/cases': typeof CasesRoute
+  '/checklists': typeof ChecklistsRoute
+  '/reports': typeof ReportsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
+  '/cases': typeof CasesRoute
+  '/checklists': typeof ChecklistsRoute
+  '/reports': typeof ReportsRoute
+  '/stakeholders': typeof StakeholdersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assistant'
+  fullPaths:
+    '/' | '/assistant' | '/cases' | '/checklists' | '/reports' | '/stakeholders'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assistant'
-  id: '__root__' | '/' | '/assistant'
+  to:
+    '/' | '/assistant' | '/cases' | '/checklists' | '/reports' | '/stakeholders'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistant'
+    | '/cases'
+    | '/checklists'
+    | '/reports'
+    | '/stakeholders'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantRoute: typeof AssistantRoute
+  CasesRoute: typeof CasesRoute
+  ChecklistsRoute: typeof ChecklistsRoute
+  ReportsRoute: typeof ReportsRoute
+  StakeholdersRoute: typeof StakeholdersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +114,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checklists': {
+      id: '/checklists'
+      path: '/checklists'
+      fullPath: '/checklists'
+      preLoaderRoute: typeof ChecklistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stakeholders': {
+      id: '/stakeholders'
+      path: '/stakeholders'
+      fullPath: '/stakeholders'
+      preLoaderRoute: typeof StakeholdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistantRoute: AssistantRoute,
+  CasesRoute: CasesRoute,
+  ChecklistsRoute: ChecklistsRoute,
+  ReportsRoute: ReportsRoute,
+  StakeholdersRoute: StakeholdersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
