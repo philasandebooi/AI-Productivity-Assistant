@@ -18,7 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { currentUser } from "@/data/sample";
 import { useAI, type ChatTurn } from "@/lib/use-ai";
 import { addTasks } from "@/lib/task-store";
-import logo from "@/assets/dsd-logo.png";
+import banner from "@/assets/sd-assist-banner.png.asset.json";
 
 export const Route = createFileRoute("/assistant")({
   component: AssistantPage,
@@ -146,7 +146,7 @@ function AssistantPage() {
 
       <div className="card-elevated flex h-[62vh] flex-col">
         <div className="flex items-center gap-3 border-b border-border px-4 py-3">
-          <img src={logo} alt="" width={32} height={32} className="size-8" loading="lazy" />
+          <img src={banner.url} alt="" className="h-8 w-auto rounded bg-white p-0.5" loading="lazy" />
           <div>
             <p className="text-sm font-semibold">SD Assist</p>
             <p className="text-xs text-muted-foreground">AI-Powered Productivity Assistant</p>
