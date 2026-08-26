@@ -98,7 +98,11 @@ function AssistantPage() {
   const regenerate = async () => {
     const lastUser = [...messages].reverse().find((m) => m.role === "user");
     if (!lastUser) return;
-    const trimmed = messages.slice(0, messages.findLastIndex((m) => m.role === "user"));
+    let lastIdx = -1;
+    messages.forEach((m, i) => {
+      if (m.role === "user") lastIdx = i;
+    });
+    const trimmed = messages.slice(0, Math.max(lastIdx, 0));
     await send(lastUser.content, trimmed as Msg[]);
   };
 
@@ -115,7 +119,7 @@ function AssistantPage() {
       lines.map((l) => {
         const [action, owner, deadline, priority] = l.split("|").map((s) => s.trim());
         return {
-          action,
+          action: action ?? "",
           owner: owner || "Unassigned",
           deadline: deadline || "To be confirmed",
           status: "Not started" as const,
