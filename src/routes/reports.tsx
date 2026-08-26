@@ -45,12 +45,12 @@ function ReportsPage() {
           label: "Generate report",
           primary: true,
           build: (v) =>
-            `Generate a ${v.reportType}.\nReporting period: ${v.period}\nProgramme/activity: ${v.programme}\nCompleted activities: ${v.activities}\nAchievements: ${v.achievements}\nChallenges: ${v.challenges}\nStatistics/results: ${v.stats}\nRecommendations: ${v.recommendations}`,
+            `Generate a ${v["reportType"]}.\nReporting period: ${v["period"]}\nProgramme/activity: ${v["programme"]}\nCompleted activities: ${v["activities"]}\nAchievements: ${v["achievements"]}\nChallenges: ${v["challenges"]}\nStatistics/results: ${v["stats"]}\nRecommendations: ${v["recommendations"]}`,
         },
         {
           label: "Executive summary",
           build: (v) =>
-            `Write a one-page executive summary for management based on this ${v.reportType} information.\nPeriod: ${v.period}\nProgramme: ${v.programme}\nActivities: ${v.activities}\nAchievements: ${v.achievements}\nChallenges: ${v.challenges}\nStatistics: ${v.stats}\nRecommendations: ${v.recommendations}`,
+            `Write a one-page executive summary for management based on this ${v["reportType"]} information.\nPeriod: ${v["period"]}\nProgramme: ${v["programme"]}\nActivities: ${v["activities"]}\nAchievements: ${v["achievements"]}\nChallenges: ${v["challenges"]}\nStatistics: ${v["stats"]}\nRecommendations: ${v["recommendations"]}`,
         },
       ]}
     />

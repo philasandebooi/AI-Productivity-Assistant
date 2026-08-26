@@ -42,16 +42,16 @@ function ChecklistsPage() {
           label: "Generate checklist",
           primary: true,
           build: (v) =>
-            `Generate a checklist for: ${v.workflow}.\nTarget date: ${v.date}\nTeam: ${v.team}\nContext: ${v.context}`,
+            `Generate a checklist for: ${v["workflow"]}.\nTarget date: ${v["date"]}\nTeam: ${v["team"]}\nContext: ${v["context"]}`,
         },
         {
           label: "Documents only",
-          build: (v) => `List only the required documents for: ${v.workflow}. Context: ${v.context}`,
+          build: (v) => `List only the required documents for: ${v["workflow"]}. Context: ${v["context"]}`,
         },
         {
           label: "Preparation timeline",
           build: (v) =>
-            `Create a preparation timeline working backwards from ${v.date} for: ${v.workflow}. Context: ${v.context}`,
+            `Create a preparation timeline working backwards from ${v["date"]} for: ${v["workflow"]}. Context: ${v["context"]}`,
         },
       ]}
     />

@@ -41,17 +41,17 @@ function StakeholdersPage() {
           label: "Generate communication",
           primary: true,
           build: (v) =>
-            `Draft a ${v.channel} to a ${v.stakeholder}. Purpose: ${v.purpose}.\nKey points:\n${v.points}\nInclude a subject line where relevant and a professional departmental sign-off.`,
+            `Draft a ${v["channel"]} to a ${v["stakeholder"]}. Purpose: ${v["purpose"]}.\nKey points:\n${v["points"]}\nInclude a subject line where relevant and a professional departmental sign-off.`,
         },
         {
           label: "Shorter version",
           build: (v) =>
-            `Draft a concise ${v.channel} (maximum 120 words) to a ${v.stakeholder} for the purpose of ${v.purpose}.\nKey points:\n${v.points}`,
+            `Draft a concise ${v["channel"]} (maximum 120 words) to a ${v["stakeholder"]} for the purpose of ${v["purpose"]}.\nKey points:\n${v["points"]}`,
         },
         {
           label: "Follow-up reminder",
           build: (v) =>
-            `Draft a polite follow-up reminder ${v.channel} to a ${v.stakeholder} regarding: ${v.purpose}.\nKey points:\n${v.points}`,
+            `Draft a polite follow-up reminder ${v["channel"]} to a ${v["stakeholder"]} regarding: ${v["purpose"]}.\nKey points:\n${v["points"]}`,
         },
       ]}
     />

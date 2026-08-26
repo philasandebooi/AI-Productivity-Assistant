@@ -41,29 +41,29 @@ function CasesPage() {
           label: "Structured summary",
           primary: true,
           build: (v) =>
-            `Create a structured administrative summary for case ${v.reference} (${v.type}).\nNotes:\n${v.notes}`,
+            `Create a structured administrative summary for case ${v["reference"]} (${v["type"]}).\nNotes:\n${v["notes"]}`,
         },
         {
           label: "Missing information & documents",
           build: (v) =>
-            `Identify missing information and outstanding documents for this ${v.type} case, based only on the notes.\nNotes:\n${v.notes}`,
+            `Identify missing information and outstanding documents for this ${v["type"]} case, based only on the notes.\nNotes:\n${v["notes"]}`,
         },
         {
           label: "Follow-up checklist",
-          build: (v) => `Generate a follow-up checklist with responsible person and suggested timeframe columns.\nNotes:\n${v.notes}`,
+          build: (v) => `Generate a follow-up checklist with responsible person and suggested timeframe columns.\nNotes:\n${v["notes"]}`,
         },
         {
           label: "Next administrative actions",
-          build: (v) => `Suggest the next administrative actions only (no decisions).\nNotes:\n${v.notes}`,
+          build: (v) => `Suggest the next administrative actions only (no decisions).\nNotes:\n${v["notes"]}`,
         },
         {
           label: "Case update template",
           build: (v) =>
-            `Draft a professional case update template for internal use regarding case ${v.reference} (${v.type}). Use placeholders where information is missing.\nNotes:\n${v.notes}`,
+            `Draft a professional case update template for internal use regarding case ${v["reference"]} (${v["type"]}). Use placeholders where information is missing.\nNotes:\n${v["notes"]}`,
         },
         {
           label: "Flag incomplete records",
-          build: (v) => `Flag any incomplete or inconsistent records evident in the notes and state clearly what cannot be determined.\nNotes:\n${v.notes}`,
+          build: (v) => `Flag any incomplete or inconsistent records evident in the notes and state clearly what cannot be determined.\nNotes:\n${v["notes"]}`,
         },
       ]}
     />
