@@ -15,6 +15,8 @@ import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ChecklistsRouteImport } from './routes/checklists'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as FollowUpsRouteImport } from './routes/follow-ups'
+import { Route as GuidelinesRouteImport } from './routes/guidelines'
+import { Route as MeetingsRouteImport } from './routes/meetings'
 import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ResearchRouteImport } from './routes/research'
@@ -50,6 +52,16 @@ const FollowUpsRoute = FollowUpsRouteImport.update({
   path: '/follow-ups',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidelinesRoute = GuidelinesRouteImport.update({
+  id: '/guidelines',
+  path: '/guidelines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingsRoute = MeetingsRouteImport.update({
+  id: '/meetings',
+  path: '/meetings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgrammesRoute = ProgrammesRouteImport.update({
   id: '/programmes',
   path: '/programmes',
@@ -78,6 +90,8 @@ export interface FileRoutesByFullPath {
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
   '/follow-ups': typeof FollowUpsRoute
+  '/guidelines': typeof GuidelinesRoute
+  '/meetings': typeof MeetingsRoute
   '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
@@ -90,6 +104,8 @@ export interface FileRoutesByTo {
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
   '/follow-ups': typeof FollowUpsRoute
+  '/guidelines': typeof GuidelinesRoute
+  '/meetings': typeof MeetingsRoute
   '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
@@ -103,6 +119,8 @@ export interface FileRoutesById {
   '/checklists': typeof ChecklistsRoute
   '/documents': typeof DocumentsRoute
   '/follow-ups': typeof FollowUpsRoute
+  '/guidelines': typeof GuidelinesRoute
+  '/meetings': typeof MeetingsRoute
   '/programmes': typeof ProgrammesRoute
   '/reports': typeof ReportsRoute
   '/research': typeof ResearchRoute
@@ -117,6 +135,8 @@ export interface FileRouteTypes {
     | '/checklists'
     | '/documents'
     | '/follow-ups'
+    | '/guidelines'
+    | '/meetings'
     | '/programmes'
     | '/reports'
     | '/research'
@@ -129,6 +149,8 @@ export interface FileRouteTypes {
     | '/checklists'
     | '/documents'
     | '/follow-ups'
+    | '/guidelines'
+    | '/meetings'
     | '/programmes'
     | '/reports'
     | '/research'
@@ -141,6 +163,8 @@ export interface FileRouteTypes {
     | '/checklists'
     | '/documents'
     | '/follow-ups'
+    | '/guidelines'
+    | '/meetings'
     | '/programmes'
     | '/reports'
     | '/research'
@@ -154,6 +178,8 @@ export interface RootRouteChildren {
   ChecklistsRoute: typeof ChecklistsRoute
   DocumentsRoute: typeof DocumentsRoute
   FollowUpsRoute: typeof FollowUpsRoute
+  GuidelinesRoute: typeof GuidelinesRoute
+  MeetingsRoute: typeof MeetingsRoute
   ProgrammesRoute: typeof ProgrammesRoute
   ReportsRoute: typeof ReportsRoute
   ResearchRoute: typeof ResearchRoute
@@ -204,6 +230,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FollowUpsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guidelines': {
+      id: '/guidelines'
+      path: '/guidelines'
+      fullPath: '/guidelines'
+      preLoaderRoute: typeof GuidelinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meetings': {
+      id: '/meetings'
+      path: '/meetings'
+      fullPath: '/meetings'
+      preLoaderRoute: typeof MeetingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programmes': {
       id: '/programmes'
       path: '/programmes'
@@ -242,6 +282,8 @@ const rootRouteChildren: RootRouteChildren = {
   ChecklistsRoute: ChecklistsRoute,
   DocumentsRoute: DocumentsRoute,
   FollowUpsRoute: FollowUpsRoute,
+  GuidelinesRoute: GuidelinesRoute,
+  MeetingsRoute: MeetingsRoute,
   ProgrammesRoute: ProgrammesRoute,
   ReportsRoute: ReportsRoute,
   ResearchRoute: ResearchRoute,

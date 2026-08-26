@@ -31,7 +31,7 @@ function ReportsPage() {
       description="Enter your reporting information and generate a structured, management-ready report."
       system={SYSTEM}
       fields={[
-        { name: "reportType", label: "Report type", type: "select", options: ["Weekly Report", "Monthly Report", "Programme Progress Report", "Meeting Report", "Stakeholder Engagement Report"] },
+        { name: "reportType", label: "Report type", type: "select", options: ["Weekly Report", "Monthly Report", "Quarterly Report", "Programme Progress Report", "Meeting Report", "Stakeholder Engagement Report"] },
         { name: "period", label: "Reporting period", type: "text", placeholder: "e.g. 01 – 31 August 2026" },
         { name: "programme", label: "Programme / activity", type: "text", placeholder: "e.g. ECD Centre Registration Support" },
         { name: "activities", label: "Completed activities", type: "textarea", rows: 4 },
@@ -45,12 +45,12 @@ function ReportsPage() {
           label: "Generate report",
           primary: true,
           build: (v) =>
-            `Generate a ${v.reportType}.\nReporting period: ${v.period}\nProgramme/activity: ${v.programme}\nCompleted activities: ${v.activities}\nAchievements: ${v.achievements}\nChallenges: ${v.challenges}\nStatistics/results: ${v.stats}\nRecommendations: ${v.recommendations}`,
+            `Generate a ${v["reportType"]}.\nReporting period: ${v["period"]}\nProgramme/activity: ${v["programme"]}\nCompleted activities: ${v["activities"]}\nAchievements: ${v["achievements"]}\nChallenges: ${v["challenges"]}\nStatistics/results: ${v["stats"]}\nRecommendations: ${v["recommendations"]}`,
         },
         {
           label: "Executive summary",
           build: (v) =>
-            `Write a one-page executive summary for management based on this ${v.reportType} information.\nPeriod: ${v.period}\nProgramme: ${v.programme}\nActivities: ${v.activities}\nAchievements: ${v.achievements}\nChallenges: ${v.challenges}\nStatistics: ${v.stats}\nRecommendations: ${v.recommendations}`,
+            `Write a one-page executive summary for management based on this ${v["reportType"]} information.\nPeriod: ${v["period"]}\nProgramme: ${v["programme"]}\nActivities: ${v["activities"]}\nAchievements: ${v["achievements"]}\nChallenges: ${v["challenges"]}\nStatistics: ${v["stats"]}\nRecommendations: ${v["recommendations"]}`,
         },
       ]}
     />

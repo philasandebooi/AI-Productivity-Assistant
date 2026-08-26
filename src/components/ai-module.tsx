@@ -43,8 +43,8 @@ export function AIModule({
   note?: string;
   extra?: React.ReactNode;
 }) {
-  const initial = Object.fromEntries(
-    fields.map((f) => [f.name, f.type === "select" ? f.options[0] : ""]),
+  const initial: Record<string, string> = Object.fromEntries(
+    fields.map((f) => [f.name, f.type === "select" ? (f.options[0] ?? "") : ""]),
   );
   const [values, setValues] = useState<Record<string, string>>(initial);
   const [output, setOutput] = useState<string | null>(null);
@@ -80,7 +80,7 @@ export function AIModule({
               {f.type === "text" && (
                 <Input
                   id={f.name}
-                  value={values[f.name]}
+                  value={values[f.name] ?? ""}
                   placeholder={f.placeholder}
                   onChange={(e) => set(f.name, e.target.value)}
                 />
@@ -89,13 +89,13 @@ export function AIModule({
                 <Textarea
                   id={f.name}
                   rows={f.rows ?? 5}
-                  value={values[f.name]}
+                  value={values[f.name] ?? ""}
                   placeholder={f.placeholder}
                   onChange={(e) => set(f.name, e.target.value)}
                 />
               )}
               {f.type === "select" && (
-                <Select value={values[f.name]} onValueChange={(v) => set(f.name, v)}>
+                <Select value={values[f.name] ?? ""} onValueChange={(v) => set(f.name, v)}>
                   <SelectTrigger id={f.name}>
                     <SelectValue />
                   </SelectTrigger>

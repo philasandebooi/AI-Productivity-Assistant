@@ -16,10 +16,14 @@ import {
   Menu,
   X,
   ShieldAlert,
+  Sun,
+  Moon,
 } from "lucide-react";
-import logo from "@/assets/dsd-logo.png";
+import banner from "@/assets/sd-assist-banner.png.asset.json";
 import { currentUser } from "@/data/sample";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/lib/theme";
+
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -77,36 +81,37 @@ export function PageHeader({
 export function AppLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { theme, toggle } = useTheme();
 
   return (
     <div className="min-h-screen bg-background">
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-72 flex-col bg-sidebar text-sidebar-foreground transition-transform lg:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-72 flex-col bg-sidebar text-sidebar-foreground transition-transform duration-300 ease-out lg:translate-x-0",
           open ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex items-start gap-3 border-b border-sidebar-border px-5 py-5">
-          <img
-            src={logo}
-            alt="Department of Social Development logo"
-            width={48}
-            height={48}
-            className="size-12 shrink-0 rounded-full bg-white p-1"
-          />
-          <div className="min-w-0">
-            <p className="text-sm font-semibold leading-tight">Department of Social Development</p>
-            <p className="mt-1 text-xs leading-tight text-sidebar-primary">
-              SD Assist | AI-Powered Productivity Assistant
-            </p>
+        <div className="border-b border-sidebar-border px-4 py-4">
+          <div className="flex items-start gap-2">
+            <img
+              src={banner.url}
+              alt="Department of Social Development — Building a Caring Society. Together."
+              className="w-full rounded-md bg-white object-contain p-1"
+            />
+            <button
+              className="lg:hidden"
+              onClick={() => setOpen(false)}
+              aria-label="Close navigation"
+            >
+              <X className="size-5" />
+            </button>
           </div>
-          <button
-            className="ml-auto lg:hidden"
-            onClick={() => setOpen(false)}
-            aria-label="Close navigation"
-          >
-            <X className="size-5" />
-          </button>
+          <p className="mt-3 text-sm font-semibold leading-tight">
+            Department of Social Development
+          </p>
+          <p className="mt-1 text-xs leading-tight text-sidebar-primary">
+            SD Assist | AI-Powered Productivity Assistant
+          </p>
         </div>
 
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
@@ -118,10 +123,10 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 to={item.to}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-all duration-200",
                   active
-                    ? "bg-sidebar-primary font-medium text-sidebar-primary-foreground"
-                    : "text-sidebar-foreground/85 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                    ? "bg-sidebar-primary font-medium text-sidebar-primary-foreground shadow-sm"
+                    : "text-sidebar-foreground/85 hover:translate-x-0.5 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                 )}
               >
                 <item.icon className="size-4 shrink-0" />
@@ -140,26 +145,20 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
       {open && (
         <div
-          className="fixed inset-0 z-30 bg-foreground/40 lg:hidden"
+          className="fixed inset-0 z-30 bg-foreground/40 backdrop-blur-[1px] lg:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
       <div className="lg:pl-72">
         <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-card/95 px-4 py-3 backdrop-blur sm:px-6">
-          <button
-            className="lg:hidden"
-            onClick={() => setOpen(true)}
-            aria-label="Open navigation"
-          >
+          <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Open navigation">
             <Menu className="size-5" />
           </button>
           <img
-            src={logo}
-            alt=""
-            width={32}
-            height={32}
-            className="size-8 lg:hidden"
+            src={banner.url}
+            alt="Department of Social Development"
+            className="h-8 w-auto rounded bg-white p-0.5 lg:hidden"
             loading="lazy"
           />
           <div className="hidden sm:block">
@@ -169,17 +168,27 @@ export function AppLayout({ children }: { children: ReactNode }) {
             </p>
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <span className="hidden text-xs text-muted-foreground sm:inline">
+            <span className="hidden text-xs text-muted-foreground lg:inline">
               Human review required on all AI output
             </span>
+            <button
+              onClick={toggle}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              className="flex size-9 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary hover:bg-primary/10"
+            >
+              {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            </button>
             <div className="flex size-9 items-center justify-center rounded-full brand-gradient text-sm font-semibold text-primary-foreground">
               PB
             </div>
           </div>
         </header>
 
-        <main className="mx-auto max-w-7xl space-y-6 px-4 py-6 sm:px-6">{children}</main>
+        <main key={pathname} className="page-enter mx-auto max-w-7xl space-y-6 px-4 py-6 sm:px-6">
+          {children}
+        </main>
       </div>
     </div>
   );
+
 }
