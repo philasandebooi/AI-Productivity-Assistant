@@ -16,10 +16,14 @@ import {
   Menu,
   X,
   ShieldAlert,
+  Sun,
+  Moon,
 } from "lucide-react";
-import logo from "@/assets/dsd-logo.png";
+import banner from "@/assets/sd-assist-banner.png.asset.json";
 import { currentUser } from "@/data/sample";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/lib/theme";
+
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
