@@ -31,7 +31,7 @@ function ReportsPage() {
       description="Enter your reporting information and generate a structured, management-ready report."
       system={SYSTEM}
       fields={[
-        { name: "reportType", label: "Report type", type: "select", options: ["Weekly Report", "Monthly Report", "Programme Progress Report", "Meeting Report", "Stakeholder Engagement Report"] },
+        { name: "reportType", label: "Report type", type: "select", options: ["Weekly Report", "Monthly Report", "Quarterly Report", "Programme Progress Report", "Meeting Report", "Stakeholder Engagement Report"] },
         { name: "period", label: "Reporting period", type: "text", placeholder: "e.g. 01 – 31 August 2026" },
         { name: "programme", label: "Programme / activity", type: "text", placeholder: "e.g. ECD Centre Registration Support" },
         { name: "activities", label: "Completed activities", type: "textarea", rows: 4 },
